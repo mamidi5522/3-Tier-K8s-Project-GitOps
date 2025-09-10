@@ -3,6 +3,9 @@ kind: Job
 metadata:
   name: mongo-init
   namespace: 3-tier-ns
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/hook: PostSync
 spec:
   template:
     spec:
