@@ -32,6 +32,15 @@ spec:
         - rs0       
         ports:
         - containerPort: 27017
+        readinessProbe:  # Added readiness probe
+          exec:
+            command:
+            - mongo
+            - --eval
+            - "db.adminCommand('ping')"
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 2
         volumeMounts:
         - name: mg-pv-cont
           mountPath: /data/db
@@ -51,7 +60,6 @@ spec:
         resources:
           requests:
             storage: 1Gi
-
 ---
 apiVersion: v1
 kind: Service

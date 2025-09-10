@@ -4,7 +4,7 @@ metadata:
   name: mongo-init
   namespace: 3-tier-ns
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "2"  # Changed from "1" to "2"
     argocd.argoproj.io/hook: PostSync
 spec:
   template:
