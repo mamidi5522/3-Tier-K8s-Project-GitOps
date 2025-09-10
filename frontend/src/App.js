@@ -64,6 +64,7 @@ function App() {
               <div className="hero-text">
                 <h1 className="hero-title">Three-Tier Application</h1>
                 <p className="hero-subtitle">Running on AWS EKS with MongoDB</p>
+                <p className="hero-subtitle">Harish N Shetty</p>
               </div>
               <div className="hero-social">
                 <h3>Stay Connected</h3>
@@ -71,6 +72,10 @@ function App() {
                   <a href="https://harishnshetty.github.io/" target="_blank" rel="noopener noreferrer" className="social-link">
                     <span className="social-icon">🌐</span>
                     <span>Website</span>
+                  </a>
+                  <a href="https://www.youtube.com/@devopsHarishNShetty" target="_blank" rel="noopener noreferrer" className="social-link">
+                    <span className="social-icon">▶️</span>
+                    <span>Youtube </span>
                   </a>
                   <a href="https://www.linkedin.com/in/harishnshetty" target="_blank" rel="noopener noreferrer" className="social-link">
                     <span className="social-icon">💼</span>
@@ -299,7 +304,7 @@ function App() {
       <footer className="main-footer">
         <div className="container">
           <div className="footer-content">
-            <p>&copy; 2023 Three-Tier Application. Built for AWS EKS.</p>
+            <p>&copy; 2025-2026 Three-Tier Application. Built for AWS EKS.</p>
             <div className="footer-links">
               <span>Developed by Harish N Shetty</span>
               <a href="https://harishnshetty.github.io/" target="_blank" rel="noopener noreferrer">Portfolio</a>
