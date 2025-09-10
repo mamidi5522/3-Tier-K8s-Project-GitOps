@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: harishnshetty/3-tier-backend:latest
+        image: harishnshetty/3-tier-backend:v3  # Update with your ECR repository
         ports:
         - containerPort: 3000
         env:

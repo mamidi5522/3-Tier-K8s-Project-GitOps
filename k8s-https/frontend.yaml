@@ -17,12 +17,9 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: harishnshetty/3-tier-frontend:latest
+        image: harishnshetty/3-tier-frontend:v1  # Update with your ECR repository
         ports:
         - containerPort: 80
-        env:
-        - name: REACT_APP_API_URL
-          value: "http://backend-svc:3001"
         resources:
           requests:
             memory: "64Mi"
