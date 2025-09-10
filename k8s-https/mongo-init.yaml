@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mongo-init
+  namespace: 3-tier-ns
+spec:
+  template:
+    spec:
+      containers:
+      - name: mongo-init
+        image: mongo:4.2
+        command:
+        - "bash"
+        - "-c"
+        - |
+          # Wait for MongoDB to be ready
+          until mongo --host mongo-0.mongo --eval "print('Waiting for MongoDB to be ready...')"; do
+            sleep 2
+          done
+          
+          # Initialize replica set
+          mongo --host mongo-0.mongo --eval "
+            rs.initiate({
+              _id: 'rs0',
+              members: [
+                { _id: 0, host: 'mongo-0.mongo:27017' },
+                { _id: 1, host: 'mongo-1.mongo:27017' },
+                { _id: 2, host: 'mongo-2.mongo:27017' }
+              ]
+            })
+          "
+          
+          # Wait for replication to complete
+          sleep 10
+          
+          # Check replica set status
+          mongo --host mongo-0.mongo --eval "
+            rs.status()
+          "
+      restartPolicy: OnFailure
