@@ -1,7 +1,16 @@
-Youtube Video to refer:
+# 3-Tier Kubernetes Project with GitOps, Dynamic PVC, and Route-53 Integration
 
-[![Video Tutorial]( https://github.com/harishnshetty/image-data-project/blob/7228511f5c982daa50aa7a74fd14c4f1fec88a90/3-tier-k8s-project.jpg)](https://youtu.be/pTmIoKUeU-Addd)
+[![Video Tutorial]( https://github.com/harishnshetty/image-data-project/blob/7228511f5c982daa50aa7a74fd14c4f1fec88a90/3-tier-k8s-project.jpg)](https://youtu)
 
+🔹 Tech Stack
+
+- 🐳 **Docker**
+- ☸️ **Kubernetes**
+- 📦 **Dynamic PVC (gp2 StorageClass)**
+- 🍃 **MongoDB ReplicaSet**
+- ⚡ **Argo CD (GitOps)**
+- 🌐 **NGINX Ingress**
+- 📡 **AWS Route-53 (DNS Management for Custom Domain)**
 
 Create EKS cluster with NodeGroup (2 nodes of t2.medium instance type)
 Create EC2 Instance t2.micro (Optional)
@@ -152,7 +161,7 @@ source ~/.bashrc
 
 ---
 
-## 6. Create EKS Cluster and Nodegroup (Try-This)
+## 5. Create EKS Cluster and Nodegroup 
 
 ```bash
 eksctl create cluster \
@@ -166,7 +175,9 @@ eksctl create cluster \
   --nodes-max 4 \
   --node-volume-size 20
 ```
-## enable this addon in the aws console
+## 6. Create IAM Service Account For EBS
+ 
+Replace `<ACCOUNT_ID>` with your AWS account ID.
 - Amazon EBS CSI Driver 
 
 ```bash
@@ -185,12 +196,12 @@ eksctl create iamserviceaccount \
 ```
 
 ```bash
-eksctl create addon --name aws-ebs-csi-driver --cluster my-cluster --service-account-role-arn arn:aws:iam::<your-aws-account-number>:role/AmazonEKS_EBS_CSI_Driver_Role --region ap-south-1 --force
+eksctl create addon --name aws-ebs-csi-driver --cluster my-cluster --service-account-role-arn arn:aws:iam::<ACCOUNT_ID>:role/AmazonEKS_EBS_CSI_Driver_Role --region ap-south-1 --force
 
 ```
 
-## 10. Create IAM Service Account
-
+## 7. Create IAM Service Account For LB
+ 
 Replace `<ACCOUNT_ID>` with your AWS account ID.
 
 ```bash
@@ -206,7 +217,7 @@ eksctl create iamserviceaccount \
 
 ---
 
-## 11. Install AWS Load Balancer Controller via Helm
+## 8. Install AWS Load Balancer Controller via Helm
 
 ```bash
 helm repo add eks https://aws.github.io/eks-charts
@@ -232,7 +243,7 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 ```
 
 
-## 7. Update kubeconfig
+## 9. Update kubeconfig
 
 ```bash
 aws eks update-kubeconfig --name my-cluster --region ap-south-1
@@ -332,7 +343,7 @@ kubectl apply -f frontend.yaml
 ```
 
 
-## Installing Argo CD on the eks cluster
+## 11. Installing Argo CD on the eks cluster
 
   - Docs: https://www.eksworkshop.com/docs/automation/gitops/argocd/access_argocd
   - Docs: https://github.com/argoproj/argo-helm
@@ -367,9 +378,9 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 Password: encrypted-password
 ---
 
-#Configure Route53
+# 12. Configure Route53
 
-##  Delete EKS Cluster (Cleanup) finally u done a project 
+## 13.  Delete EKS Cluster (Cleanup) finally u done a project 
  - For more conents reach out https://harishnshetty.github.io/projects.html
 
 ```bash
