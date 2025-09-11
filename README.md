@@ -3,7 +3,7 @@
 ## For more projects, check out  
 ## [https://harishnshetty.github.io/projects.html](https://harishnshetty.github.io/projects.html)
 
-[![Video Tutorial]( https://github.com/harishnshetty/image-data-project/blob/7228511f5c982daa50aa7a74fd14c4f1fec88a90/3-tier-k8s-project.jpg)](https://youtu)
+[![Video Tutorial]( https://github.com/harishnshetty/image-data-project/blob/7228511f5c982daa50aa7a74fd14c4f1fec88a90/3-tier-k8s-project.jpg)](https://youtu.be/NDVVMcVqyvc)
 
 🔹 Tech Stack
 
@@ -17,8 +17,6 @@
 
 Create EKS cluster with NodeGroup (2 nodes of t2.medium instance type)
 Create EC2 Instance t2.micro (Optional)
-
----
 
 
 <!-- ## Role Name [ eks-custom-role  ]
@@ -53,9 +51,6 @@ Create EC2 Instance t2.micro (Optional)
 }
 
 ``` -->
-
-
----
 
 
 ---
@@ -205,7 +200,21 @@ eksctl create addon --name aws-ebs-csi-driver --cluster my-cluster --service-acc
 
 ```
 
-## 7. Create IAM Service Account For LB
+
+
+## 7. Create IAM Policy for AWS Load Balancer Controller
+
+New policy link: [AWS EKS LBC Policy](https://docs.aws.amazon.com/eks/latest/userguide/lbc-manifest.html)
+
+```bash
+curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.13.3/docs/install/iam_policy.json
+
+aws iam create-policy \
+  --policy-name AWSLoadBalancerControllerIAMPolicy \
+  --policy-document file://iam_policy.json
+```
+
+## 7.1 . Create IAM Service Account For LB
  
 Replace `<ACCOUNT_ID>` with your AWS account ID.
 
