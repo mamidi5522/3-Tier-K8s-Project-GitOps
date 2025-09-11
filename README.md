@@ -20,7 +20,7 @@ Create EC2 Instance t2.micro (Optional)
 
 ---
 
-# AWS Configure 
+
 <!-- ## Role Name [ eks-custom-role  ]
 - IAMFullAccess
 - CloudFrontFullAccess
@@ -54,9 +54,7 @@ Create EC2 Instance t2.micro (Optional)
 
 ``` -->
 
-```bash
-aws configure
-```
+
 ---
 
 
@@ -65,6 +63,10 @@ aws configure
 
 - eks-setup-instance
 
+# AWS Configure 
+```bash
+aws configure
+```
 ## 1. AWS CLI Installation
 
 Refer: [AWS CLI Installation Guide](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
